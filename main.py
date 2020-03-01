@@ -6,7 +6,7 @@ import tensorflow as tf
 #4フレーム以降は、異なる。
 #3フレームまでをmaskはTrueとした。
 if __name__ == '__main__':
-    #data1とdata2の形状(batchsize, frames, height, weight, channels)
+    #data1とdata2の形状(batchsize, frames, height, width, channels)
     data1 = np.random.randn(1, 5, 100, 100, 3)
     mask1 = tf.cast([[True, True, True, False, False]], tf.bool)
 
