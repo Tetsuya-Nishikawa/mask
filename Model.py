@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 #maskが機能しているかの簡単な実験
+#モデルは、Conv+LSTM+Dense
 class Model(tf.keras.Model):
     def __init__(self, frames, height, weight, channels):
         super(Model, self).__init__()
