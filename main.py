@@ -2,6 +2,9 @@ from Model import Model
 import numpy as np
 import tensorflow as tf
 
+#3フレームまで全く同じ時系列データdata1, data2
+#4フレーム以降は、異なる。
+#3フレームまでをmaskでTrueとして実験
 if __name__ == '__main__':
     data1 = np.random.randn(1, 5, 100, 100, 3)
     mask1 = tf.cast([[True, True, True, False, False]], tf.bool)
