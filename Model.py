@@ -15,7 +15,6 @@ class Model(tf.keras.Model):
 
     def call(self, inputs, mask):
         with tf.device('/CPU:0'):
-            tf.random.set_seed(seed=123)
             outputs = self.conv_layer(inputs, mask=mask)
             outputs = tf.reshape(outputs, [-1, self.frames, outputs.numpy().shape[2]*outputs.numpy().shape[3]*outputs.numpy().shape[4]])
             outputs = self.lstm_layer(outputs, mask=mask)
