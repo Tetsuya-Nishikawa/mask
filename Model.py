@@ -15,8 +15,12 @@ class Model(tf.keras.Model):
 
     def call(self, inputs, mask):
         with tf.device('/CPU:0'):
+            #conv_layerに対するoutputsの形状(batchsize, frames, height, weight, channels)
             outputs = self.conv_layer(inputs, mask=mask)
+            #reshapeに対するoutputsの形状(batchsize, framges, height*weight*channels)
             outputs = tf.reshape(outputs, [-1, self.frames, outputs.numpy().shape[2]*outputs.numpy().shape[3]*outputs.numpy().shape[4]])
+            #lstm_layerに対するoutputsの形状(batchsize, frames*height*weight*channels)
             outputs = self.lstm_layer(outputs, mask=mask)
+            #dense_layerに対する出力(batchsize, class)
             outputs = self.dense_layer(outputs)   
         return outputs
