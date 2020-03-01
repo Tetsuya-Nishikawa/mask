@@ -8,7 +8,7 @@ class Model(tf.keras.Model):
         super(Model, self).__init__()
         self.frames = frames
         self.height = height
-        self.weight = width
+        self.width = width
         self.channels = channels 
         self.conv_layer   = tf.keras.layers.TimeDistributed(tf.keras.layers.Conv2D(3, (3, 3), activation='relu'), input_shape=(self.frames, self.height, self.width, self.channels))
         self.lstm_layer = tf.compat.v1.keras.layers.LSTM(10, time_major=False, activation='tanh')
